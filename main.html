@@ -282,11 +282,25 @@
 
             <div class="question">
                 <label for="response_code">回答コード</label>
-                <input type="text" id="response_code" name="response_code" placeholder="回答コードを入力してください">
+                <input type="question" id="response_code" name="entry.1636953252">
             </div>
 
             <button class="submit-btn" type="submit">送信する</button>
+<script>
+    function getParameterByName(name) {
+        var url = window.location.href;
+        var regex = new RegExp("[?&]" + name + "=([0-9]{6})");  // 6桁の数字に限定
+        var results = regex.exec(url);
+        return results ? results[1] : null;  // マッチすればその値を返し、無ければnullを返す
+}
 
+            // 回答コードをURLから取得し、フォームに設定する
+    window.onload = function() {
+        var responseCode = getParameterByName('response_code'); // URLのパラメータ名 'response_code' から取得
+        if (responseCode) {
+            document.getElementById('response_code').value = responseCode; // hiddenフィールドに設定
+            }
+</script>
             <div class="footer">
                 <p>ご回答いただきありがとうございます。</p>
             </div>
