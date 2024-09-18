@@ -141,6 +141,12 @@
             margin: 0;
             vertical-align: middle;
         }
+        .spinner {
+        text-align: center;
+        font-size: 18px;
+        margin-top: 20px;
+        color: #555;
+    }
     </style>
 
     <div class="header">
@@ -150,7 +156,7 @@
     <div class="container">
         <h1>お客様満足度アンケート</h1>
 
-        <form id="surveyForm" action="https://script.google.com/macros/s/AKfycbxp-QchI--Y935fx-aRT0DTRZ2RUKZryAhUYWmQS0oIjgU-ch8_ogVupwaOsDXca9Lw/exec" method="POST">
+        <form id="surveyForm" action="https://docs.google.com/forms/u/0/d/1bJtJuP_S82tZAdauDSqgRS9pebnUy2gcMm0rrszk7HY/prefill" method="POST">
             <div class="question">
                 <label for="email">メールアドレス<span class="mandatory">※</span></label>
                 <input type="text" class="validate[required,custom[email]]" id="email" name="emailAddress" placeholder="メールアドレスを入力してください">
@@ -340,5 +346,16 @@
                 event.preventDefault();
                 alert('必須項目が入力されていません。すべての項目に入力をお願いします。');
             }
+
+            // 送信ボタンを無効化して連打防止
+            var submitButton = document.querySelector('.submit-btn');
+            submitButton.disabled = true;
+            submitButton.innerHTML = "送信中..."; // 送信中のテキストに変更
+
+            // 送信インジケータ（スピナー）を表示（任意）
+            var spinner = document.createElement('div');
+            spinner.className = 'spinner';
+            spinner.innerHTML = '送信しています...';
+            document.querySelector('.container').appendChild(spinner);
         });
     </script>
