@@ -343,25 +343,25 @@
     </div>
 
     <script>
-        document.getElementById('surveyForm').addEventListener('submit', function(event) {
-            // フォームのバリデーションをチェック
-    
-            if (!this.checkValidity()) {
-            event.preventDefault(); // フォーム送信を中断
-            alert('必須項目が入力されていません。すべての項目に入力をお願いします。');
-            return; // バリデーションが通らなかったらここで終了
+document.getElementById('surveyForm').addEventListener('submit', function(event) {
+    // フォームのバリデーションをチェック
+    if (!this.checkValidity()) {
+        event.preventDefault(); // フォーム送信を中断
+        alert('必須項目が入力されていません。すべての項目に入力をお願いします。');
+        return; // バリデーションが通らなかったらここで終了
     }
 
+    // ここに到達するのはバリデーションが通った場合のみ
 
-            // 送信ボタンを無効化して連打防止
-            var submitButton = document.querySelector('.submit-btn');
-            submitButton.disabled = true;
-            submitButton.innerHTML = "送信中..."; // 送信中のテキストに変更
+    // 送信ボタンを無効化して連打防止
+    var submitButton = document.querySelector('.submit-btn');
+    submitButton.disabled = true;
+    submitButton.innerHTML = "送信中..."; // 送信中のテキストに変更
 
-            // 送信インジケータ（スピナー）を表示（任意）
-            var spinner = document.createElement('div');
-            spinner.className = 'spinner';
-            spinner.innerHTML = '送信しています...';
-            document.querySelector('.container').appendChild(spinner);
-        });
+    // 送信インジケータ（スピナー）を表示（任意）
+    var spinner = document.createElement('div');
+    spinner.className = 'spinner';
+    spinner.innerHTML = '送信しています...';
+    document.querySelector('.container').appendChild(spinner);
+});
     </script>
