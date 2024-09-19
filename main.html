@@ -343,25 +343,34 @@
     </div>
 
     <script>
-document.getElementById('surveyForm').addEventListener('submit', function(event) {
-    // フォームのバリデーションをチェック
-    if (!this.checkValidity()) {
-        event.preventDefault(); // フォーム送信を中断
-        alert('必須項目が入力されていません。すべての項目に入力をお願いします。');
-        return; // バリデーションが通らなかったらここで終了
-    }
+ $(document).ready(function() {
+            // jQuery Validation Engineのバリデーションをフォームに適用
+            $("#surveyForm").validationEngine('attach', {
+                promptPosition: "topLeft" // エラーメッセージ位置の指定
+            });
 
-    // ここに到達するのはバリデーションが通った場合のみ
+            // フォーム送信時の処理
+            $('#surveyForm').on('submit', function(event) {
+                // バリデーションを実行
+                if (!$("#surveyForm").validationEngine('validate')) {
+                    // バリデーションに失敗した場合
+                    event.preventDefault(); // フォーム送信を中断
+                    alert('必須項目が入力されていません。すべての項目に入力をお願いします。');
+                    return; // 処理をここで終了
+                }
 
-    // 送信ボタンを無効化して連打防止
-    var submitButton = document.querySelector('.submit-btn');
-    submitButton.disabled = true;
-    submitButton.innerHTML = "送信中..."; // 送信中のテキストに変更
+                // バリデーションが通った場合のみここに到達
 
-    // 送信インジケータ（スピナー）を表示（任意）
-    var spinner = document.createElement('div');
-    spinner.className = 'spinner';
-    spinner.innerHTML = '送信しています...';
-    document.querySelector('.container').appendChild(spinner);
-});
+                // 送信ボタンを無効化して連打防止
+                var submitButton = document.querySelector('.submit-btn');
+                submitButton.disabled = true;
+                submitButton.innerHTML = "送信中..."; // 送信中のテキストに変更
+
+                // スピナーの表示
+                var spinner = document.createElement('div');
+                spinner.className = 'spinner';
+                spinner.innerHTML = '送信しています...';
+                document.querySelector('.container').appendChild(spinner);
+            });
+        });
     </script>
