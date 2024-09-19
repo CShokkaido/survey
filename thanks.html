@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>アンケートご協力ありがとうございました</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        /* 全体背景画像設定 */
+        .thank-you-container {
+            background-image: url('YOUR_IMAGE_PATH'); /* ここに画像パスを設定 */
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            color: white;
+        }
+
+        /* 背景にオーバーレイを追加 */
+        .thank-you-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* 画像に黒の半透明レイヤー */
+            z-index: 1;
+        }
+
+        /* メインコンテンツの配置とデザイン */
+        .thank-you-content {
+            position: relative;
+            z-index: 2;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 10px;
+            text-align: center;
+            max-width: 600px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            font-size: 36px;
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .signature {
+            font-size: 16px;
+            color: #555;
+            margin-top: 30px;
+        }
+
+        /* 戻るボタンデザイン */
+        .btn-back {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 15px 30px;
+            background-color: #A8D468;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-back:hover {
+            background-color: #96c15b;
+        }
+
+        /* アニメーション効果 */
+        .thank-you-content {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="thank-you-container">
+        <div class="thank-you-content">
+            <h1>アンケートご協力ありがとうございました</h1>
+
+            <p>この度はアンケートにご協力いただき誠にありがとうございます。</p>
+            <p>お客様のご期待にそえるよう、いただきました貴重なご意見・ご要望をもとに、今後のサービスや運営の改善に反映させて参ります。</p>
+            <p>今後とも何卒宜しくお願い申し上げます。</p>
+
+            <p class="signature">LEOC CS事務局</p>
+
+            <!-- 公式サイトへ戻るボタン -->
+            <a href="https://www.leoc-j.com/" class="btn-back">公式ホームページ</a>
+        </div>
+    </div>
+
+</body>
+</html>
